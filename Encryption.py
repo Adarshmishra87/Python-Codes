@@ -1,4 +1,4 @@
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q ', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
            's', 't', 'u', 'v',
            'w', 'x', 'y', 'z']
@@ -8,26 +8,15 @@ plain_text = input("Enter your text here:\n").lower()
 shifts = int(input("enter your shift number here:\n"))
 
 
-def encrypt(plain, shift1):
-    cipher = ""
-    for english_letters in plain:
-        positions = letters.index(english_letters)
-        new_positions = positions + shift1
-        new_letters = letters[new_positions]
-        cipher += new_letters
-    print(cipher)
+def cipher_gang(start_text, shift1, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift1 *= -1
+    for english_letters in start_text:
+        position = letters.index(english_letters)
+        new_position = position + shift1
+        end_text += letters[new_position]
+    print(end_text)
 
 
-def decrypt(cipher, shift1):
-    cipher_text = ""
-    for english_letters in cipher:
-        positions = letters.index(english_letters)
-        new_positions = positions - shift1
-        cipher_text += letters[new_positions]
-    print(cipher_text)
-
-
-if direction == "encode":
-    encrypt(plain=plain_text, shift1=shifts)
-elif direction=="decode":
-    decrypt(cipher=plain_text, shift1=shifts)
+cipher_gang(start_text=plain_text, shift1=shifts, cipher_direction=direction)
