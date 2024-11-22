@@ -1,0 +1,5 @@
+print('welcome boss')
+a=input()
+print('this is new office how it is ?')
+b=input()
+print('Its good and '+a+' '+b)
